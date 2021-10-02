@@ -35,7 +35,7 @@ else
     alert("Не знаете? ECMAScript!");
 }*/
 
-message== "ECMAScript" ? alert("Верно!"): alert("Не знаете? ECMAScript!");
+message== "ECMAScript" ? alert("Correct"): alert("Не знаете? ECMAScript!");
 
 
 

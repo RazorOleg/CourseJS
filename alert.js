@@ -254,6 +254,7 @@ function isSalaries(obj)
 alert(isSalaries(salaries));*/
 
 let menu = {
+    author: "Oleg",
     width: 200,
     height: 300,
     title: "My menu"
@@ -264,10 +265,16 @@ function multiplyNumeric(obj) {
     let key;
     for (key in obj) {
         if (typeof obj[key] == "number") {
-            obj[key] = 2 * obj[key];
+            obj[key] = 3 * obj[key];
         }
     }
 }
+
+const validateAuthor = (obj) => {
+    return obj.author === "Artur" ? "Hello my boss" : "Hello halop";
+}
+
+console.log("Result of validation", validateAuthor(menu));
 
 multiplyNumeric(menu);
 

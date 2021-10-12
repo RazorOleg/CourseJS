@@ -1,282 +1,221 @@
 alert('Я JavaScript');
+
 /*
-//1.1-2.13
-/!*let admin;
-let name;
+let num1 = +prompt("Введите первое число: ");
+let num2 = +prompt("Введите второе число: ");
 
-name = "Джон";
+let sum = num1 + num2;
+console.log(+sum.toFixed(2));
 
-admin = name;
-alert(`Имя: ${admin}`);
 
-let newName = "Oleg";
+alert( (Math.round(6.35 * 10) / 10) );
 
-alert( `hello ${1}` );
+/!*let readNumber = () => {
+    let num = +prompt("Введите число", 0);
+    if ( !isFinite(num) ) {
+        readNumber();
+    }
+    return num;
 
-alert( `hello ${"newName"}` );
+}
+readNumber();*!/
 
-alert( `hello ${newName}` );*!/
 
-let userName = prompt("Как Вас зовут?", 'Имя');
-alert(`Ваше имя: ${userName}`);
+function readNumber() {
+    let num;
 
-let a = prompt("Первое число?", 1);
-let b = prompt("Второе число?", 2);
+    do {
+        num = prompt("Введите число", 0);
+    } while ( !isFinite(num) );
 
-alert(+a + +b); // 12
+    if (num === null || num === '') return null;
+
+    return +num;
+}
+
+alert(`Число: ${readNumber()}`);
+
+
+function random(min, max) {
+    return min + Math.random() * (max - min);
+}
+
+alert( random(1, 5) );
+alert( random(1, 5) );
+alert( random(1, 5) );
+
+function randomInteger(min, max) {
+    return Math.floor(min + Math.random() * (max + 1 - min));
+}
+
+alert( randomInteger(1, 3) );
+alert( randomInteger(1, 4) );
+alert( randomInteger(1, 5) );
 */
 
-/*let message = prompt("Какое «официальное» название JavaScript?", "");
-message== "ECMAScript" ? alert("Correct"): alert("Не знаете? ECMAScript!");
+function ucFirst(str) {
+    if (!str) return str;
 
-let result = prompt("Введите число", "");
-if (result>0)
-{
-    alert('1');
-}
-else if (result<0)
-{
-    alert('-1');
-}
-else if (result==0)
-{
-    alert('0');
-}
-
-let a =1;
-let b =1;
-let res = (a + b < 4) ? 'Мало': 'Много';
-alert(res);
-
-let login = prompt("Введите значения:", "");
-let mes = (login == 'Сотрудник') ? 'Привет' :
-                (login == 'Директор') ? 'Директор' :
-                       (login == '') ? 'Нет логина' : '';*/
-/*alert(mes);*/
-
-/*let age = 12;
-if(age <=14 || age >=90)
-{
-    alert("Переменная age не находится в диапазоне от 14 до 90");
-}
-
-let login = prompt("Кто там?", "");
-if (login=="Админ")
-{
-    parol = prompt("Пароль?", "Введите пароль");
-    if(parol == "Я главный")
-    {
-        alert("Здравствуйте!");
-    }
-    else if(parol == null || parol == "")
-    {
-        alert("Отменено");
-    }
-    else
-    {
-        alert("Неверный пароль");
-    }
-}
-else if(login == null || login == "")
-{
-    alert("Отменено");
-}
-else
-{
-    alert("Я вас не знаю");
-}
-let i = 0;
-/!*for (i = 2; i <= 10; i++ )
-{
-    if (!(i % 2))
-    {
-        alert(i);
-    }
-}*!/
-
-while (i < 3)
-{
-    alert( `number ${i}!`);
-    i++;
-}*/
-
-/*for (i = 0; i < 100; i++)
-{
-    let condition = prompt("Введите число больше 100", "");
-    if (condition > 100 || condition == null || condition == "") break;
-}*/
-
-/*let n = prompt("Введите значения интервала: от 2 до ", 10)
-for (i = 2; i < n; i++)
-{
-    if((i>1) && (i % (1 || i) == 0) && !(i % 3 == 0)) alert(i);
-}*/
-
-/*let browser = prompt("Please, input the name of browser: ", "");
-if(browser == "Edge")
-{
-    alert("You've got the Edge!" );
-}
-else if(browser == "Chrome" ||
-        browser == "Firefox"||
-        browser == "Safari" ||
-        browser == "Opera")
-{
-    alert("Okey, we support these browsers too");
-}
-else
-{
-    alert("We hope that this page looks ok! ");
-}
-
-const number = +prompt('Введите число между 0 и 3', '');
-switch(number)
-{
-    case 0:
-        alert("Вы ввели число 0");
-        break;
-    case 1:
-        alert("Вы ввели число 1");
-        break;
-    case 2:
-    case 3:
-        alert("Вы ввели число 2, а может и 3");
-        break;
-    default:
-        alert("Число не входит в диапазон");
-}
-
-let age = prompt("Put your age: ", "18");
-function checkAge(age)
-{
-    return (age > 18) ? true: confirm("Родители разрешили? ");
+    let firstSymbol = str[0].toUpperCase();
+    return firstSymbol + str.slice(1, 4);
 
 }
-checkAge(age);
 
-let age1 = prompt("Put your age: ", "18");
-function checkAge1(age1)
-{
-    return (age1 > 18) || confirm("Родители разрешили? ");
+alert(ucFirst("вася"));
 
-}
-checkAge1(age1);
-
-let a = prompt("Введите значения a: ", "0");
-let b = prompt("Введите значения b: ", "0");
-function min(a, b)
-{
-    return (a > b) ? alert(b): alert(a);
-}
-min(a,b);*/
-
-//3.1-3.6
-/*let x = prompt("Введите значения x: ", "0");
-let n = prompt("Введите значения n: ", "0");
-function pow(x, n) {
-    let res = Math.pow(x, n);
-    alert(res);
-}
-
-pow(x, n);
-
-let res = confirm("Вы согласны?") ? () => alert("Вы согласились."): () => alert("Вы отменили выполнение.");
-res();
-
-function pow(x,n) {
-    let result = 1;
-
-    for ( let i = 0; i < n; i++) {
-
-        result*=x;
-    }
-
-    return result;
-}
-
-let x = prompt("x?",'');
-let n=prompt("n?",'');
-
-if (n<=0) {
-    alert(`Степень ${n} не поддерживается,
-           введите целую степень, большую 0`);
-} else {
-    alert(pow(x, n));
-}*/
-
-/*let user = {
-    name: "John",
-    surname: "Smith"
-};
-
-alert(user.name);
-
-user.name = "Pete";
-
-alert(user.name);
-
-delete user.name;
-
-let schedule = {};
-
-
-function isEmpty(obj) {
-
-    for (let key in obj)
-    {
+function checkSpam(str) {
+    let lowerStr = str.toLowerCase();
+    if(lowerStr.includes('viagra') || lowerStr.includes('xxx')) {
+        return true;
+    } else {
         return false;
     }
-    return true;
+}
+/*
+alert(checkSpam('buy ViAgRA now'));
+alert(checkSpam('free xxxxx'));
+alert(checkSpam("innocent rabbit"));
+
+function truncate(str, maxLength) {
+    if(str.length > maxLength) {
+        return str.slice(0, maxLength - 1) + "...";
+    } else {
+        return str;
+    }
+
 }
 
-alert( isEmpty(schedule) );
+alert(truncate("Вот, что мне хотелось бы сказать на эту тему:", 20));
+alert(truncate("Всем привет!", 20));
 
-schedule["8:30"] = "get up";
-
-alert( isEmpty(schedule) );
-
-let salaries = {
-    John: 100,
-    Ann: 160,
-    Pete: 130
+function extractCurrencyValue(str) {
+    return +str.slice(1);
 }
 
-function isSalaries(obj)
-{
+alert( extractCurrencyValue('$120'));
+console.log(typeof(extractCurrencyValue('$120')));*/
+
+/*let styles = ["Джаз", "Блюз"];
+
+console.log(styles);
+
+styles.push("Рок-н-рол");
+
+console.log(styles);
+
+let index = Math.floor((styles.length - 1) / 2);
+styles[index] = "Класика";
+
+console.log(styles);
+
+alert(styles.shift());
+
+console.log(styles);
+
+styles.unshift("Рэп", "Регги");
+
+console.log(styles);
+
+let sumInput = () => {
+    let value;
+    let arr = [];
+    while(true) {
+
+        value = prompt("Введите значения: ");
+
+        if (value === "" || value === null || !isFinite(value)) break;
+
+        arr.push(+value);
+
+    }
+
     let sum = 0;
-
-    for (let key in obj) {
-        sum += obj[key];
+    for(value of arr) {
+        sum += value;
     }
     return sum;
 }
 
-alert(isSalaries(salaries));*/
+alert(sumInput());*/
 
-let menu = {
-    author: "Oleg",
-    width: 200,
-    height: 300,
-    title: "My menu"
-};
 
-function multiplyNumeric(obj) {
+/*function sumInput() {
 
-    let key;
-    for (key in obj) {
-        if (typeof obj[key] == "number") {
-            obj[key] = 3 * obj[key];
+    let numbers = [];
+
+    while (true) {
+
+        let value = prompt("Введите число", 0);
+
+        // Прекращаем ввод?
+        if (value === "" || value === null || !isFinite(value)) break;
+
+        numbers.push(+value);
+    }
+
+    let sum = 0;
+    for (let number of numbers) {
+        sum += number;
+    }
+    return sum;
+}
+
+alert( sumInput() );*/
+
+/*
+let arr = [1, -2, 3, 4, 5, -3];
+
+function getMaxSubSum() {
+    let maxSum = 0;
+    for (let i = 0; i < arr.length; i++) {
+        let sum = 0;
+        for(let j = i; j < arr.length; j++) {
+            sum += arr[j];
+            maxSum = Math.max(maxSum, sum);
         }
     }
+    alert(maxSum);
+}
+getMaxSubSum();*/
+
+function camelize(str) {
+
+    let arr = str.split("-");
+    for (let i = 1; i < arr.length; i++) {
+        let firstSymbol = arr[i].toUpperCase().slice(0, 1);
+        arr[i] = firstSymbol + arr[i].slice(1);
+        console.log(firstSymbol);
+    }
+
+    let newStr = arr.join("");
+    return newStr;
 }
 
-const validateAuthor = (obj) => {
-    return obj.author === "Artur" ? "Hello my boss" : "Hello halop";
+alert(camelize("background-color"));
+alert(camelize("list-style-image"));
+alert(camelize("-webkit-transition"));
+
+
+/*
+function camelize(str) {
+    return str
+        .split('-') // разбивает 'my-long-word' на массив ['my', 'long', 'word']
+        .map(
+            // Переводит в верхний регистр первые буквы всех элементом массива за исключением первого
+            // превращает ['my', 'long', 'word'] в ['my', 'Long', 'Word']
+            (word, index) => index == 0 ? word : word[0].toUpperCase() + word.slice(1)
+        )
+        .join(''); // соединяет ['my', 'Long', 'Word'] в 'myLongWord'
+}*/
+
+
+function filterRange(arr, a, b) {
+   return arr.filter(item => (a <= item && item <= b));
 }
+let arr = [5, 3, 2, 8, 1];
+let filtered = filterRange(arr, 1, 4);
+alert(filtered);
+alert(arr);
 
-console.log("Result of validation", validateAuthor(menu));
 
-multiplyNumeric(menu);
-
-console.log(menu);
 

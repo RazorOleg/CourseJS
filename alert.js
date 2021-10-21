@@ -435,6 +435,7 @@ function count(obj) {
     }
     return count
 }*/
+}
 
 /*function count(obj) {
     return Object.keys(obj).length;

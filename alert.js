@@ -22,7 +22,7 @@ alert( pockets.pen ); // 3
 alert( bed.glasses ); // 1
 alert( table.money );
 
-et hamster = {
+let hamster = {
     stomach: [],
 
     eat(food) {

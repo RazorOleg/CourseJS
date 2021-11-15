@@ -1,49 +1,50 @@
+alert('Я JavaScript');
 
+function Accumulator(startingValue) {
+    this.value = startingValue;
 
-let head = {
-    glasses: 1
-
-};
-
-let table = {
-    pen: 3,
-    __proto__: head
-};
-
-let bed = {
-    sheet: 1,
-    pillow: 2,
-    __proto__: table
-};
-
-let pocket = {
-    money: 2000,
-    __proto__: bed
-};
-
-alert(pocket.pen);
-alert(pocket.glasses);
-
-let hamster = {
-    stomach: [],
-
-    eat(food) {
-        this.stomach.push(food);
+    this.read = function () {
+        this.number = +prompt("Введите число: ");
+        this.value += this.number;
+        console.log(this.value);
     }
-};
+}
 
-let speedy = {
-    stomach: [],
-    __proto__: hamster
-};
+let accumulator = new Accumulator(1);
 
-let lazy = {
-    stomach: [],
-    __proto__: hamster
-};
+accumulator.read();
 
-// Этот хомяк нашёл еду
-speedy.eat("apple");
-alert( speedy.stomach ); // apple
+accumulator.read();
 
-alert( lazy.stomach );
+alert(accumulator.value);
+
+class Soldier {
+    constructor(value) {
+        this.value = value;
+        }
+    Shoot() {
+        return "выстрел";
+    }
+    Heal() {
+        return "лечение";
+    }
+    Run() {
+        return "побег";
+    }
+
+    get condition() {
+        if(this.value === "солдат здоров") {
+            return this.Shoot();
+        } else if(this.value === "солдат ранен") {
+            return this.Heal();
+        } else if(this.value === "солдат проигрывает") {
+            return this.Run();
+        } else {
+            return;
+        }
+    }
+}
+
+let value = prompt("Введите значения:", "солдат здоров");
+let res = new Soldier(value);
+console.log(res.condition);

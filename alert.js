@@ -1,3 +1,4 @@
+//8.1-8.4 Prototype & Inheritance
 let head = {
     glasses: 1
 };
@@ -18,9 +19,8 @@ let pockets = {
     __proto__: bed
 };
 
-alert( pockets.pen ); // 3
-alert( bed.glasses ); // 1
-alert( table.money );
+alert(pockets.pen);
+alert(bed.glasses);
 
 let hamster = {
     stomach: [],
@@ -31,18 +31,84 @@ let hamster = {
 };
 
 let speedy = {
-    __proto__: hamster,
-    stomach: []
+    stomach: [],
+    __proto__: hamster
 };
 
 let lazy = {
-    __proto__: hamster,
-    stomach: []
+    stomach: [],
+    __proto__: hamster
 };
 
-// Шустрый хомяк нашёл еду
+// Этот хомяк нашёл еду
 speedy.eat("apple");
+speedy.eat("orange");
 alert( speedy.stomach ); // apple
 
-// Живот ленивого хомяка пуст
-alert( lazy.stomach ); // <ничего>
+lazy.eat("orange");
+alert( lazy.stomach );
+
+
+/*function Rabbit(name) {
+    this.name = name;
+    alert(name);
+}
+
+let obj = new Rabbit("White Rabbit");
+
+let obj2 = new obj.constructor("Black Rabbit");*/
+
+function Rabbit(name) {
+    this.name = name;
+    alert(name);
+}
+Rabbit.prototype = { };
+
+let obj = new Rabbit("White Rabbit");
+
+let obj2 = new obj.constructor("Black Rabbit");
+
+alert(obj2.name);
+
+
+/*Function.prototype.defer = function (ms) {
+    setTimeout(this, ms)
+}
+
+function f() {
+    alert("Hello!");
+}
+
+f.defer(1000);*/
+
+
+Function.prototype.defer = function(ms) {
+    let f = this;
+    return function(...args) {
+        setTimeout(() => f.apply(this, args), ms);
+    }
+};
+
+function f(a, b) {
+    alert( a + b );
+}
+
+f.defer(1000)(1, 2);
+
+
+let dictionary = Object.create(null, {
+    toString: {
+        value() {
+            return Object.keys(this).join();
+        }
+    }
+});
+
+dictionary.apple = "Apple";
+dictionary.__proto__ = "test";
+
+for(let key in dictionary) {
+    alert(key);
+}
+
+alert(dictionary);

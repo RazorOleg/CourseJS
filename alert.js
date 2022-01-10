@@ -1,50 +1,114 @@
-alert('Я JavaScript');
+//8.1-8.4 Prototype & Inheritance
+let head = {
+    glasses: 1
+};
 
-function Accumulator(startingValue) {
-    this.value = startingValue;
+let table = {
+    pen: 3,
+    __proto__: head
+};
 
-    this.read = function () {
-        this.number = +prompt("Введите число: ");
-        this.value += this.number;
-        console.log(this.value);
+let bed = {
+    sheet: 1,
+    pillow: 2,
+    __proto__: table
+};
+
+let pockets = {
+    money: 2000,
+    __proto__: bed
+};
+
+alert(pockets.pen);
+alert(bed.glasses);
+
+let hamster = {
+    stomach: [],
+
+    eat(food) {
+        this.stomach.push(food);
     }
+};
+
+let speedy = {
+    stomach: [],
+    __proto__: hamster
+};
+
+let lazy = {
+    stomach: [],
+    __proto__: hamster
+};
+
+// Этот хомяк нашёл еду
+speedy.eat("apple");
+speedy.eat("orange");
+alert( speedy.stomach ); // apple
+
+lazy.eat("orange");
+alert( lazy.stomach );
+
+
+/*function Rabbit(name) {
+    this.name = name;
+    alert(name);
 }
 
-let accumulator = new Accumulator(1);
+let obj = new Rabbit("White Rabbit");
 
-accumulator.read();
+let obj2 = new obj.constructor("Black Rabbit");*/
 
-accumulator.read();
+function Rabbit(name) {
+    this.name = name;
+    alert(name);
+}
+Rabbit.prototype = { };
 
-alert(accumulator.value);
+let obj = new Rabbit("White Rabbit");
 
-class Soldier {
-    constructor(value) {
-        this.value = value;
-        }
-    Shoot() {
-        return "выстрел";
-    }
-    Heal() {
-        return "лечение";
-    }
-    Run() {
-        return "побег";
-    }
+let obj2 = new obj.constructor("Black Rabbit");
 
-    get condition() {
-        if(this.value === "солдат здоров") {
-            return this.Shoot();
-        } else if(this.value === "солдат ранен") {
-            return this.Heal();
-        } else if(this.value === "солдат проигрывает") {
-            return this.Run();
-        } else {
-            return;
-        }
-    }
+alert(obj2.name);
+
+
+/*Function.prototype.defer = function (ms) {
+    setTimeout(this, ms)
 }
 
-let value = prompt("Введите значения:", "солдат здоров");
-let res = new Soldier(value);
-console.log(res.condition);
+function f() {
+    alert("Hello!");
+}
+
+f.defer(1000);*/
+
+
+Function.prototype.defer = function(ms) {
+    let f = this;
+    return function(...args) {
+        setTimeout(() => f.apply(this, args), ms);
+    }
+};
+
+function f(a, b) {
+    alert( a + b );
+}
+
+f.defer(1000)(1, 2);
+
+
+let dictionary = Object.create(null, {
+    toString: {
+        value() {
+            return Object.keys(this).join();
+        }
+    }
+});
+
+dictionary.apple = "Apple";
+dictionary.__proto__ = "test";
+
+for(let key in dictionary) {
+    alert(key);
+}
+
+alert(dictionary);

@@ -167,6 +167,7 @@ class ExtendedClock extends Clock {
 }
 let extendsClock = new ExtendedClock({template: 'h:m:s'});
 extendsClock.start();
+
 //9.3-9.7
 class Rabbit2 extends Object {
     constructor(name) {
@@ -195,4 +196,4 @@ alert( err.name ); // FormatError
 alert( err.stack ); // stack
 
 alert( err instanceof FormatError ); // true
-alert( err instanceof SyntaxError )
+alert( err instanceof SyntaxError );

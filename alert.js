@@ -1,5 +1,6 @@
 //9.1
 class Clock {
+
     constructor({template}) {
         this.template = template;
     }
@@ -32,10 +33,11 @@ class Clock {
         this.render();
         this.timer = setInterval(() => this.render, 1000);
     }
-
 }
+
 //9.2
-class Animal {
+    class Animal {
+
     constructor(name) {
         this.name = name;
     }

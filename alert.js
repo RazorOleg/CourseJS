@@ -1,50 +1,81 @@
-alert('Я JavaScript');
+//9.1
+class Clock {
+    constructor({template}) {
+        this.template = template;
+    }
 
-function Accumulator(startingValue) {
-    this.value = startingValue;
+    render() {
+        let date = new Date();
 
-    this.read = function () {
-        this.number = +prompt("Введите число: ");
-        this.value += this.number;
-        console.log(this.value);
+        let hours = date.getHours();
+        if (hours < 10) hours = '0' + hours;
+
+        let mins = date.getMinutes();
+        if (mins < 10) mins = '0' + mins;
+
+        let secs = date.getSeconds();
+        if (secs < 10) secs = '0' + secs;
+
+        let output = this.template
+            .replace('h', hours)
+            .replace('m', mins)
+            .replace('s', secs);
+
+        console.log(output);
+    }
+
+    stop() {
+        clearInterval(this.timer);
+    }
+
+    start() {
+        this.render();
+        this.timer = setInterval(() => this.render, 1000);
+    }
+
+}
+//9.2
+class Animal {
+    constructor(name) {
+        this.name = name;
+    }
+
+}
+
+class Rabbit extends Animal {
+    constructor(name) {
+        super(name);
+        this.created = Date.now();
     }
 }
 
-let accumulator = new Accumulator(1);
+let rabbit = new Rabbit("Белый кролик");
+alert(rabbit.name);
 
-accumulator.read();
-
-accumulator.read();
-
-alert(accumulator.value);
-
-class Soldier {
-    constructor(value) {
-        this.value = value;
-        }
-    Shoot() {
-        return "выстрел";
-    }
-    Heal() {
-        return "лечение";
-    }
-    Run() {
-        return "побег";
+class ExtendedClock extends Clock {
+    constructor(props) {
+        super(props);
+        let { precision=1000 } = props;
+        this.precision = precision;
     }
 
-    get condition() {
-        if(this.value === "солдат здоров") {
-            return this.Shoot();
-        } else if(this.value === "солдат ранен") {
-            return this.Heal();
-        } else if(this.value === "солдат проигрывает") {
-            return this.Run();
-        } else {
-            return;
-        }
+    start() {
+        this.render();
+        this.timer = setInterval(() => this.render, this.precision)
     }
 }
 
-let value = prompt("Введите значения:", "солдат здоров");
-let res = new Soldier(value);
-console.log(res.condition);
+let extendsClock = new ExtendedClock({template: 'h:m:s'});
+extendsClock.start();
+
+//9.3-9.7
+class Rabbit2 extends Object {
+    constructor(name) {
+        super();
+        this.name = name;
+    }
+}
+
+let rabbit2 = new Rabbit2("Кроль");
+
+alert( rabbit2.hasOwnProperty('name') );

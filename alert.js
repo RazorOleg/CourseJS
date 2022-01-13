@@ -228,3 +228,4 @@ let promise = new Promise(function(resolve, reject) {
 }).catch(alert);
 
 promise.catch(alert);
+console.log();

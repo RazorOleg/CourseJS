@@ -93,5 +93,3 @@ async function wait() {
 function f(){
     wait().then(alert);
 }
-
-f();
